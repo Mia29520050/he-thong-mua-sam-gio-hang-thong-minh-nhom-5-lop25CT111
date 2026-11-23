@@ -3,7 +3,11 @@
 > **Học phần:** Thiết Kế & Phát Triển Ứng Dụng Web Thương Mại Điện Tử  
 > **Phân hệ thực hiện:** 2.2.1 - Smart Shopping Cart & Product Catalog  
 > **Công nghệ:** 100% Thuần HTML5, CSS3 & Vanilla JavaScript (ES6+) — *Zero Dependencies (Không phụ thuộc Framework ngoài)*  
-> **Sinh viên thực hiện:** Võ Minh Quang (MSSV: `125001101` - Lớp: `25CT112`)
+> **Sinh viên thực hiện:
+** Lê Nhật Duy (MSSV: `125000335` - Lớp: `25CT111`)
+** Mai Huy Phong (MSSV: `125000312` - Lớp: `25CT111`)
+** Nguyễn Nhật Bảo Lâm (MSSV: `125000777` - Lớp: `25CT111`)
+** Vũ Minh Tiến (MSSV: `125000764` - Lớp: `25CT111`)
 
 ---
 
@@ -67,13 +71,6 @@ Dự án được xây dựng tuân thủ nghiêm ngặt chuẩn kiến trúc we
   - Mật khẩu: `123`
 - Khi đã đăng nhập: Header hiển thị Avatar định danh, dropdown menu quản lý tài khoản và tự động điền (Auto-fill) thông tin người mua khi thanh toán.
 
-### 📱 2.7. Tối Ưu Trải Nghiệm Thiết Bị Di Động (Mobile-First UX)
-- **Mobile Bottom Navigation Bar:** Thanh công cụ cố định đáy với 5 mục chức năng (Trang chủ, Cửa hàng, Giỏ hàng có badge nhảy số, Tài khoản, Chuyển theme Sáng/Tối).
-- **Side Drawer Menu:** Menu trượt mượt mà có hiệu ứng mờ nền (backdrop blur).
-- **Lưới sản phẩm 2 cột:** Cân đối, không bị cuộn ngang, chuẩn kích thước chạm ngón tay (Touch Target $\ge$ 44px).
-
----
-
 ## 📁 3. Cấu Trúc Thư Mục Dự Án
 
 ```text
@@ -120,19 +117,7 @@ dự án/
 
 ---
 
-## 📸 5. Minh Chứng Giao Diện Thực Tế
-
-| Giao diện Trang chủ (Light Mode) | Giao diện Trang chủ (Dark Mode) |
-| :---: | :---: |
-| ![Light Mode](screenshots/01_home_light.png) | ![Dark Mode](screenshots/02_home_dark.png) |
-| **Modal Đăng nhập & Đăng ký** | **Trang Cửa hàng & Bộ lọc Đa tiêu chí** |
-| ![Auth Modal](screenshots/03_auth_modal.png) | ![Shop Catalog](screenshots/04_shop_catalog.png) |
-| **Giỏ hàng Thông minh & Thanh toán** | **Tối ưu Hiển thị Trên Di Động** |
-| ![Smart Cart](screenshots/05_smart_cart.png) | ![Mobile View](screenshots/06_mobile_view.png) |
-
----
-
-## 🚀 6. Hướng Dẫn Cài Đặt & Trải Nghiệm
+## 🚀 5. Hướng Dẫn Cài Đặt & Trải Nghiệm
 
 Dự án được xây dựng hoàn toàn độc lập, không yêu cầu cài đặt NPM, Webpack hay bất kỳ máy chủ phức tạp nào.
 
@@ -148,7 +133,7 @@ Dự án được xây dựng hoàn toàn độc lập, không yêu cầu cài �
 
 ---
 
-## 🧪 7. Dữ Liệu Kiểm Thử & Kịch Bản Mẫu (Test Scenarios)
+## 🧪 6. Dữ Liệu Kiểm Thử & Kịch Bản Mẫu (Test Scenarios)
 
 ### Kịch bản 1: Kiểm thử Đăng nhập & Tự động điền
 - Nhấp nút **Đăng nhập** trên thanh Header.
@@ -179,7 +164,7 @@ Dự án được xây dựng hoàn toàn độc lập, không yêu cầu cài �
 
 ---
 
-## 📋 8. Đánh Giá Mức Độ Hoàn Thành Yêu Cầu Học Phần
+## 📋 7. Đánh Giá Mức Độ Hoàn Thành Yêu Cầu Học Phần
 
 | Hạng mục yêu cầu | Tiêu chuẩn đánh giá | Mức độ hoàn thành |
 | :--- | :--- | :---: |
@@ -193,7 +178,7 @@ Dự án được xây dựng hoàn toàn độc lập, không yêu cầu cài �
 
 ---
 
-## 👨‍💻 9. Thông Tin Tác Giả & Bản Quyền
+## 👨‍💻 8. Thông Tin Tác Giả & Bản Quyền
 
 - **Họ và tên:** Võ Minh Quang
 - **Mã số sinh viên (MSSV):** 125001101
