@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cửa Hàng & Bộ Lọc Thông Minh - TrendMart</title>
+  <meta name="description" content="Khám phá toàn bộ sản phẩm tại TrendMart với bộ lọc thông minh theo danh mục, mức giá và trạng thái khuyến mãi.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER (STICKY) ================= -->
+  <header class="header-wrapper">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Trang chủ TrendMart">
+        <div class="logo-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Trend<span>Mart</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Menu chính">
+        <a href="index.html" class="nav-link">Trang chủ</a>
+        <a href="shop.html" class="nav-link active">Cửa hàng</a>
+        <a href="shop.html?badge=sale" class="nav-link">
+          Ưu đãi
+          <span class="nav-badge-pill">Hot Deal</span>
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" onclick="ThemeService.toggle()" aria-label="Đổi giao diện Sáng / Tối">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Auth Login/Register Container -->
+        <div class="auth-btn-container"></div>
+
+        <a href="cart.html" class="cart-btn-header" aria-label="Xem giỏ hàng">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Giỏ hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Mở menu di động">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer" aria-label="Menu di động">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Trend<span>Mart</span></span>
+      </div>
+      <button class="drawer-close-btn" style="padding: 0.5rem; color: var(--text-secondary);" aria-label="Đóng menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-links">
+      <a href="index.html" class="drawer-link">Trang chủ</a>
+      <a href="shop.html" class="drawer-link active">Cửa hàng & Danh mục</a>
+      <a href="shop.html?badge=sale" class="drawer-link">Ưu đãi giảm sốc</a>
+      <a href="cart.html" class="drawer-link">Giỏ hàng của tôi</a>
+      <div style="padding: 1rem 0; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="auth-btn-container"></div>
+        <button class="btn btn-secondary btn-block" onclick="ThemeService.toggle()" style="justify-content: flex-start;">
+          <span>🌓 Đổi giao diện Sáng / Tối</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="section section-bg-subtle" style="min-height: 80vh;">
+    <div class="container">
+      
+      <!-- Breadcrumb & Page Title -->
+      <div style="margin-bottom: 1.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          <a href="index.html" style="color: var(--text-secondary);">Trang chủ</a>
+          <span>/</span>
+          <span style="color: var(--primary); font-weight: 600;">Cửa hàng</span>
+        </div>
+        <h1 style="font-size: clamp(1.8rem, 3.2vw, 2.4rem); font-weight: 800; color: var(--text-main);">
+          Tất Cả Sản Phẩm
+        </h1>
+      </div>
+
+      <div class="shop-layout">
+        <!-- ================= SIDEBAR FILTER ================= -->
+        <aside class="filter-sidebar" id="filter-sidebar">
+          <div class="filter-header">
+            <span class="filter-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              <span>Bộ Lọc</span>
+            </span>
+            <button class="btn-reset-filters" id="btn-clear-filters">Xóa bộ lọc</button>
+          </div>
+
+          <!-- Filter Block 1: Categories -->
+          <div class="filter-block">
+            <h4 class="filter-label">Loại hàng</h4>
+            <div class="filter-options-list" id="category-filter-list">
+              <!-- Dynamically populated or static -->
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-category" value="all" checked>
+                <span>Tất cả sản phẩm</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-category" value="tech">
+                <span>Công nghệ & Phụ kiện</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-category" value="fashion-women">
+                <span>Thời trang Nữ</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-category" value="fashion-men">
+                <span>Thời trang Nam</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-category" value="beauty">
+                <span>Làm đẹp & Mỹ phẩm</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-category" value="home">
+                <span>Gia dụng & Đời sống</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Filter Block 2: Price Range -->
+          <div class="filter-block">
+            <div class="filter-label">
+              <span>Khoảng giá</span>
+              <span id="price-slider-display" style="color: var(--primary); font-size: 0.85rem;">Tất cả</span>
+            </div>
+            <div class="price-range-wrapper">
+              <input type="range" 
+                     id="price-range-slider" 
+                     class="price-range-slider" 
+                     min="200000" 
+                     max="3500000" 
+                     step="50000" 
+                     value="3500000">
+              <div class="price-range-values">
+                <span>200.000₫</span>
+                <span>3.500.000₫+</span>
+              </div>
+              <div class="price-presets-wrap">
+                <button type="button" class="price-preset-pill active" data-max="3500000">Tất cả</button>
+                <button type="button" class="price-preset-pill" data-max="500000">&lt; 500k</button>
+                <button type="button" class="price-preset-pill" data-max="1000000">&lt; 1 triệu</button>
+                <button type="button" class="price-preset-pill" data-max="2000000">&lt; 2 triệu</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Block 3: Badge Status -->
+          <div class="filter-block">
+            <h4 class="filter-label">Trạng thái ưu đãi</h4>
+            <div class="filter-options-list">
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-badge" value="all" checked>
+                <span>Tất cả</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-badge" value="sale">
+                <span style="color: var(--badge-sale); font-weight: 600;">Giảm giá sốc (Sale)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-badge" value="hot">
+                <span style="color: var(--badge-hot); font-weight: 600;">Bán chạy (Hot)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="radio" name="filter-badge" value="new">
+                <span style="color: var(--badge-new); font-weight: 600;">Hàng mới về (New)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Close button for Mobile Filter Drawer -->
+          <div style="margin-top: 1.5rem; display: none;" id="mobile-filter-close-wrap">
+            <button class="btn btn-primary btn-block" id="btn-apply-mobile-filter">
+              Áp dụng bộ lọc
+            </button>
+          </div>
+        </aside>
+
+        <!-- ================= PRODUCT CATALOG MAIN ================= -->
+        <section class="shop-content-area">
+          
+          <!-- Top Controls (Search & Sort) -->
+          <div class="shop-controls">
+            <!-- Search Input -->
+            <div class="search-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2.2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" 
+                     id="search-input" 
+                     class="search-input" 
+                     placeholder="Tìm kiếm theo tên sản phẩm..." 
+                     aria-label="Tìm kiếm sản phẩm">
+            </div>
+
+            <!-- Mobile Trigger & Sort -->
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <!-- Mobile Filter Button -->
+              <button class="btn btn-secondary mobile-filter-trigger" id="btn-open-mobile-filter" aria-label="Mở bộ lọc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span>Bộ lọc</span>
+              </button>
+
+              <!-- Sort Dropdown -->
+              <div class="shop-sort-wrap">
+                <label for="sort-select" class="sort-label">Sắp xếp:</label>
+                <select id="sort-select" class="sort-select" aria-label="Sắp xếp sản phẩm">
+                  <option value="featured">Nổi bật nhất</option>
+                  <option value="price-asc">Giá: Thấp đến Cao</option>
+                  <option value="price-desc">Giá: Cao đến Thấp</option>
+                  <option value="rating-desc">Đánh giá cao nhất</option>
+                  <option value="discount-desc">Giảm giá nhiều nhất</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Count Summary -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+            <p id="product-count-summary" style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 600;">
+              Đang tải danh sách sản phẩm...
+            </p>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="product-grid" id="shop-products-grid">
+            <!-- Dynamically populated by shop.js -->
+          </div>
+
+          <!-- Empty State (Hidden by default) -->
+          <div id="shop-empty-state" class="cart-empty-state" style="display: none; background: #FFFFFF; border-radius: var(--radius-lg); border: 1px solid var(--border-light); margin-top: 1rem;">
+            <div class="cart-empty-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3>Không tìm thấy sản phẩm!</h3>
+            <p>Rất tiếc, không có sản phẩm nào khớp với bộ lọc hoặc từ khóa bạn vừa tìm kiếm.</p>
+            <button class="btn btn-primary" onclick="window.ShopApp?.resetFilters()">
+              Xóa tất cả bộ lọc
+            </button>
+          </div>
+
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </div>
+            <span class="brand-name">Trend<span style="color: #A78BFA;">Mart</span></span>
+          </div>
+          <p>Hệ thống mua sắm trực tuyến thông minh với giỏ hàng tự động, ưu đãi ngập tràn và trải nghiệm mượt mà không độ trễ.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Về TrendMart</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html" class="footer-nav-link">Câu chuyện thương hiệu</a></li>
+            <li><a href="shop.html" class="footer-nav-link">Danh sách cửa hàng</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Hỗ Trợ Khách Hàng</h4>
+          <ul class="footer-nav">
+            <li><a href="cart.html" class="footer-nav-link">Kiểm tra giỏ hàng</a></li>
+            <li><a href="#" class="footer-nav-link">Chính sách đổi trả 30 ngày</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Danh Mục Hàng Đầu</h4>
+          <ul class="footer-nav">
+            <li><a href="shop.html?category=tech" class="footer-nav-link">Công nghệ & Phụ kiện</a></li>
+            <li><a href="shop.html?category=fashion-women" class="footer-nav-link">Thời trang Nữ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter-col">
+          <h4 class="footer-heading">Đăng Ký Nhận Tin</h4>
+          <p class="newsletter-desc">Nhận ngay mã giảm giá và voucher bí mật sớm nhất.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Nhập email của bạn..." required>
+            <button type="submit" class="btn btn-primary btn-sm">Gửi</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 TrendMart. Thiết kế và phát triển với 100% HTML5, CSS3 & ES6+ Javascript.</p>
+        <p>Thương mại điện tử thông minh cho mọi nhà.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE BOTTOM NAVIGATION ================= -->
+  <nav class="mobile-bottom-nav" aria-label="Thanh điều hướng di động">
+    <div class="mobile-bottom-nav-inner">
+      <a href="index.html" class="mobile-bottom-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Trang chủ</span>
+      </a>
+      <a href="shop.html" class="mobile-bottom-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Cửa hàng</span>
+      </a>
+      <a href="cart.html" class="mobile-bottom-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="mobile-bottom-badge cart-badge">0</span>
+        <span>Giỏ hàng</span>
+      </a>
+      <button type="button" class="mobile-bottom-item" onclick="AuthService.openModal('login')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span id="bottom-nav-account-text">Tài khoản</span>
+      </button>
+      <button type="button" class="mobile-bottom-item" onclick="ThemeService.toggle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <span id="bottom-nav-theme-text">Giao diện</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
