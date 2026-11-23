@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrendMart - Mua Sắm Thông Minh, Tiết Kiệm Hơn Mỗi Ngày</title>
+  <meta name="description" content="Hệ thống mua sắm trực tuyến thông minh với giỏ hàng tự động, ưu đãi ngập tràn và trải nghiệm mua sắm mượt mà cùng TrendMart.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER (STICKY) ================= -->
+  <header class="header-wrapper">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Trang chủ TrendMart">
+        <div class="logo-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Trend<span>Mart</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Menu chính">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="shop.html" class="nav-link">Cửa hàng</a>
+        <a href="shop.html?badge=sale" class="nav-link">
+          Ưu đãi
+          <span class="nav-badge-pill">Hot Deal</span>
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" onclick="ThemeService.toggle()" aria-label="Đổi giao diện Sáng / Tối">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Auth Login/Register Container -->
+        <div class="auth-btn-container"></div>
+
+        <!-- Cart Button -->
+        <a href="cart.html" class="cart-btn-header" aria-label="Xem giỏ hàng">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Giỏ hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-btn" aria-label="Mở menu trên di động">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer" aria-label="Menu trên điện thoại">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Trend<span>Mart</span></span>
+      </div>
+      <button class="drawer-close-btn" style="padding: 0.5rem; color: var(--text-secondary);" aria-label="Đóng menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-links">
+      <a href="index.html" class="drawer-link active">Trang chủ</a>
+      <a href="shop.html" class="drawer-link">Cửa hàng & Danh mục</a>
+      <a href="shop.html?badge=sale" class="drawer-link">
+        Ưu đãi giảm sốc
+        <span class="nav-badge-pill">Hot Deal</span>
+      </a>
+      <a href="cart.html" class="drawer-link">Giỏ hàng của tôi</a>
+      <div style="padding: 1rem 0; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="auth-btn-container"></div>
+        <button class="btn btn-secondary btn-block" onclick="ThemeService.toggle()" style="justify-content: flex-start;">
+          <span>🌓 Đổi giao diện Sáng / Tối</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Bộ Sưu Tập Xu Hướng 2026</span>
+          </div>
+
+          <h1 class="hero-title">
+            Mua Sắm Thông Minh,<br>
+            <span>Tiết Kiệm Hơn</span> Mỗi Ngày.
+          </h1>
+
+          <p class="hero-subtitle">
+            Trải nghiệm nền tảng thương mại điện tử thế hệ mới với hàng ngàn sản phẩm tuyển chọn cao cấp, giỏ hàng tính toán tức thì và giao hàng hỏa tốc trong 2 giờ.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="shop.html" class="btn btn-primary btn-lg">
+              <span>Khám phá ngay</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="shop.html?badge=sale" class="btn btn-secondary btn-lg">
+              <span>Săn Deal Sốc</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <h4>20K+</h4>
+              <p>Khách hàng tin chọn</p>
+            </div>
+            <div class="hero-stat-item">
+              <h4>100%</h4>
+              <p>Thanh toán bảo mật</p>
+            </div>
+            <div class="hero-stat-item">
+              <h4>30 Ngày</h4>
+              <p>Đổi trả dễ dàng</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Showcase Card -->
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&auto=format&fit=crop&q=80" 
+                   alt="Tai nghe chống ồn Ultra ANC Pro"
+                   loading="eager"
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=700&auto=format&fit=crop&q=80';">
+              <span class="hero-card-tag">GIẢM 24%</span>
+            </div>
+            <div class="hero-card-details">
+              <span class="hero-card-category">CÔNG NGHỆ CAO CẤP</span>
+              <h3 class="hero-card-name">Tai nghe Ultra ANC Pro Wireless</h3>
+              <div class="hero-card-price-row">
+                <div class="hero-price-wrap">
+                  <span class="hero-price-new">1.890.000₫</span>
+                  <span class="hero-price-old">2.490.000₫</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="CartService.addItem(1, 1)">
+                  <span>Thêm giỏ</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="hero-floating-pill pill-1">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>4.9 / 5 (142 Đánh giá)</span>
+          </div>
+
+          <div class="hero-floating-pill pill-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Giao siêu tốc 2 Giờ</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. FLOATING TRUST BAR ================= -->
+    <div class="container trust-bar-wrapper">
+      <div class="trust-bar">
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5>Miễn phí vận chuyển</h5>
+            <p>Cho đơn hàng từ 1.000.000₫</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5>Đổi trả 30 ngày</h5>
+            <p>1 đổi 1 nếu lỗi từ nhà sản xuất</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5>Thanh toán bảo mật</h5>
+            <p>Đa kênh: VietQR, MoMo, Visa/Master</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5>100% Chính hãng</h5>
+            <p>Cam kết chất lượng đạt chuẩn</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= 3. SHOP BY CATEGORY ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Khám Phá Theo Chủ Đề</span>
+          <h2 class="section-title">Danh Mục Nổi Bật</h2>
+          <p class="section-desc">Tìm kiếm nhanh chóng món đồ bạn yêu thích theo các danh mục thịnh hành nhất</p>
+        </div>
+
+        <div class="category-grid">
+          <a href="shop.html?category=fashion-women" class="category-card">
+            <div class="category-avatar">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=300&auto=format&fit=crop&q=80" alt="Thời trang Nữ">
+            </div>
+            <span class="category-title">Thời trang Nữ</span>
+          </a>
+
+          <a href="shop.html?category=fashion-men" class="category-card">
+            <div class="category-avatar">
+              <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=300&auto=format&fit=crop&q=80" alt="Thời trang Nam">
+            </div>
+            <span class="category-title">Thời trang Nam</span>
+          </a>
+
+          <a href="shop.html?category=home" class="category-card">
+            <div class="category-avatar">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300&auto=format&fit=crop&q=80" alt="Gia dụng">
+            </div>
+            <span class="category-title">Gia dụng</span>
+          </a>
+
+          <a href="shop.html?category=beauty" class="category-card">
+            <div class="category-avatar">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=300&auto=format&fit=crop&q=80" alt="Làm đẹp">
+            </div>
+            <span class="category-title">Làm đẹp</span>
+          </a>
+
+          <a href="shop.html?category=tech" class="category-card">
+            <div class="category-avatar">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&auto=format&fit=crop&q=80" alt="Công nghệ">
+            </div>
+            <span class="category-title">Công nghệ</span>
+          </a>
+
+          <a href="shop.html?badge=sale" class="category-card">
+            <div class="category-avatar" style="background: var(--badge-sale-bg); display: flex; align-items: center; justify-content: center;">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--badge-sale)" stroke-width="2.2">
+                <line x1="19" y1="5" x2="5" y2="19"></line>
+                <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                <circle cx="17.5" cy="17.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <span class="category-title" style="color: var(--badge-sale);">Ưu Đãi Sốc</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. BEST SELLERS ================= -->
+    <section class="section section-bg-subtle">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Bán Chạy Nhất Tuần</span>
+          <h2 class="section-title">Sản Phẩm Xu Hướng</h2>
+          <p class="section-desc">Được hàng ngàn khách hàng tin yêu và đánh giá 5 sao trong tháng này</p>
+        </div>
+
+        <div class="product-grid" id="featured-products-grid">
+          <!-- Rendered dynamically by script -->
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="shop.html" class="btn btn-outline-primary btn-lg">
+            <span>Xem tất cả sản phẩm</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. PROMO BANNERS ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="promo-banners-grid">
+          <!-- Left: First Order Coupon -->
+          <div class="promo-card promo-coupon">
+            <div>
+              <div class="coupon-badge-top">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <span>Dành Riêng Khách Hàng Mới</span>
+              </div>
+              <h3>Giảm Ngay 15% Cho Đơn Hàng Đầu Tiên!</h3>
+              <p>Áp dụng tự động tại bước thanh toán giỏ hàng. Tiết kiệm tối đa trên mọi danh mục sản phẩm.</p>
+            </div>
+
+            <div class="coupon-copy-box">
+              <span class="coupon-code-text">FIRST15</span>
+              <button class="btn-copy-code" onclick="copyCoupon('FIRST15')">Sao chép mã</button>
+            </div>
+          </div>
+
+          <!-- Right: Deal of the Day with Countdown -->
+          <div class="promo-card promo-deal">
+            <div>
+              <div class="deal-header-row">
+                <span class="deal-badge-flash">⚡ SĂN DEAL GIỜ VÀNG</span>
+                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Số lượng có hạn</span>
+              </div>
+              <h3 style="font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 800; margin-bottom: 0.35rem;">
+                Nồi Chiên Không Dầu Thông Minh 6.5L Ceramic
+              </h3>
+              <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">
+                Công nghệ đối lưu 360 độ, giảm 85% mỡ thừa. Giảm sâu đến <strong style="color: #F87171;">31%</strong> chỉ trong hôm nay!
+              </p>
+
+              <!-- Countdown Timer -->
+              <div class="countdown-clock">
+                <div class="countdown-box">
+                  <div class="countdown-num" id="deal-hours">08</div>
+                  <div class="countdown-label">Giờ</div>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-box">
+                  <div class="countdown-num" id="deal-minutes">45</div>
+                  <div class="countdown-label">Phút</div>
+                </div>
+                <div class="countdown-sep">:</div>
+                <div class="countdown-box">
+                  <div class="countdown-num" id="deal-seconds">30</div>
+                  <div class="countdown-label">Giây</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <a href="shop.html?badge=sale" class="btn btn-primary" style="background: var(--badge-sale); box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);">
+                <span>Săn Deal Ngay</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. GỢI Ý RIÊNG CHO BẠN ================= -->
+    <section class="section section-bg-subtle">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Dành Riêng Cho Bạn</span>
+          <h2 class="section-title">Gợi Ý Sản Phẩm Phù Hợp</h2>
+          <p class="section-desc">Tuyển chọn các món đồ xu hướng được nhiều khách hàng quan tâm và yêu thích nhất</p>
+        </div>
+
+        <div class="product-grid" id="ai-picks-grid">
+          <!-- Rendered dynamically by script -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </div>
+            <span class="brand-name">Trend<span style="color: #A78BFA;">Mart</span></span>
+          </div>
+          <p>
+            Hệ thống mua sắm trực tuyến thông minh với giỏ hàng tự động, ưu đãi ngập tràn và trải nghiệm mượt mà không độ trễ.
+          </p>
+          <div class="social-links-list">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Về Chúng Tôi -->
+        <div>
+          <h4 class="footer-heading">Về TrendMart</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html" class="footer-nav-link">Câu chuyện thương hiệu</a></li>
+            <li><a href="shop.html" class="footer-nav-link">Danh sách cửa hàng</a></li>
+            <li><a href="#" class="footer-nav-link">Cơ hội nghề nghiệp</a></li>
+            <li><a href="#" class="footer-nav-link">Bản quyền & Báo chí</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Hỗ Trợ -->
+        <div>
+          <h4 class="footer-heading">Hỗ Trợ Khách Hàng</h4>
+          <ul class="footer-nav">
+            <li><a href="cart.html" class="footer-nav-link">Kiểm tra giỏ hàng</a></li>
+            <li><a href="#" class="footer-nav-link">Chính sách vận chuyển</a></li>
+            <li><a href="#" class="footer-nav-link">Chính sách đổi trả 30 ngày</a></li>
+            <li><a href="#" class="footer-nav-link">Điều khoản dịch vụ</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Danh Mục -->
+        <div>
+          <h4 class="footer-heading">Danh Mục Hàng Đầu</h4>
+          <ul class="footer-nav">
+            <li><a href="shop.html?category=tech" class="footer-nav-link">Công nghệ & Phụ kiện</a></li>
+            <li><a href="shop.html?category=fashion-women" class="footer-nav-link">Thời trang Nữ</a></li>
+            <li><a href="shop.html?category=fashion-men" class="footer-nav-link">Thời trang Nam</a></li>
+            <li><a href="shop.html?category=beauty" class="footer-nav-link">Mỹ phẩm & Chăm sóc</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Newsletter -->
+        <div class="newsletter-col">
+          <h4 class="footer-heading">Đăng Ký Nhận Tin</h4>
+          <p class="newsletter-desc">Nhận ngay thông báo voucher bí mật và các sự kiện Flash Sale sớm nhất.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Nhập địa chỉ email của bạn..." required>
+            <button type="submit" class="btn btn-primary btn-sm">Gửi</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 TrendMart. Thiết kế và phát triển với 100% HTML5, CSS3 & ES6+ Javascript.</p>
+        <p>Thương mại điện tử thông minh cho mọi nhà.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE BOTTOM NAVIGATION ================= -->
+  <nav class="mobile-bottom-nav" aria-label="Thanh điều hướng di động">
+    <div class="mobile-bottom-nav-inner">
+      <a href="index.html" class="mobile-bottom-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Trang chủ</span>
+      </a>
+      <a href="shop.html" class="mobile-bottom-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Cửa hàng</span>
+      </a>
+      <a href="cart.html" class="mobile-bottom-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="mobile-bottom-badge cart-badge">0</span>
+        <span>Giỏ hàng</span>
+      </a>
+      <button type="button" class="mobile-bottom-item" onclick="AuthService.openModal('login')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span id="bottom-nav-account-text">Tài khoản</span>
+      </button>
+      <button type="button" class="mobile-bottom-item" onclick="ThemeService.toggle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <span id="bottom-nav-theme-text">Giao diện</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Khởi tạo các sản phẩm nổi bật & gợi ý AI trên trang chủ
+    document.addEventListener('DOMContentLoaded', () => {
+      const featuredContainer = document.getElementById('featured-products-grid');
+      const aiContainer = document.getElementById('ai-picks-grid');
+
+      if (featuredContainer && window.TrendMartData) {
+        // Lấy 8 sản phẩm nổi bật
+        const featuredProducts = window.TrendMartData.products.filter(p => p.isFeatured).slice(0, 8);
+        featuredContainer.innerHTML = featuredProducts.map(p => renderProductCardHTML(p)).join('');
+      }
+
+      if (aiContainer && window.TrendMartData) {
+        // Lấy 4 sản phẩm AI gợi ý
+        const aiProducts = window.TrendMartData.products.filter(p => p.isAIPick).slice(0, 4);
+        aiContainer.innerHTML = aiProducts.map(p => renderProductCardHTML(p)).join('');
+      }
+    });
+  </script>
+</body>
+</html>

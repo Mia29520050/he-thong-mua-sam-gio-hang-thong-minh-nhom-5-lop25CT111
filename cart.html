@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng Thông Minh & Thanh Toán - TrendMart</title>
+  <meta name="description" content="Quản lý giỏ hàng thông minh, tính toán tức thì thuế VAT, phí vận chuyển và thanh toán bảo mật đa kênh cùng TrendMart.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER (STICKY) ================= -->
+  <header class="header-wrapper">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Trang chủ TrendMart">
+        <div class="logo-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Trend<span>Mart</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu" aria-label="Menu chính">
+        <a href="index.html" class="nav-link">Trang chủ</a>
+        <a href="shop.html" class="nav-link">Cửa hàng</a>
+        <a href="shop.html?badge=sale" class="nav-link">
+          Ưu đãi
+          <span class="nav-badge-pill">Hot Deal</span>
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" onclick="ThemeService.toggle()" aria-label="Đổi giao diện Sáng / Tối">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Auth Login/Register Container -->
+        <div class="auth-btn-container"></div>
+
+        <a href="cart.html" class="cart-btn-header active" style="border-color: var(--primary); color: var(--primary); background: var(--primary-light);" aria-label="Xem giỏ hàng">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Giỏ hàng</span>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Mở menu di động">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer" aria-label="Menu di động">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Trend<span>Mart</span></span>
+      </div>
+      <button class="drawer-close-btn" style="padding: 0.5rem; color: var(--text-secondary);" aria-label="Đóng menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-links">
+      <a href="index.html" class="drawer-link">Trang chủ</a>
+      <a href="shop.html" class="drawer-link">Cửa hàng & Danh mục</a>
+      <a href="shop.html?badge=sale" class="drawer-link">Ưu đãi giảm sốc</a>
+      <a href="cart.html" class="drawer-link active">Giỏ hàng của tôi</a>
+      <div style="padding: 1rem 0; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="auth-btn-container"></div>
+        <button class="btn btn-secondary btn-block" onclick="ThemeService.toggle()" style="justify-content: flex-start;">
+          <span>🌓 Đổi giao diện Sáng / Tối</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="section section-bg-subtle" style="min-height: 80vh;">
+    <div class="container">
+      
+      <!-- Breadcrumb & Header -->
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          <a href="index.html" style="color: var(--text-secondary);">Trang chủ</a>
+          <span>/</span>
+          <span style="color: var(--primary); font-weight: 600;">Giỏ hàng & Thanh toán</span>
+        </div>
+        <h1 style="font-size: clamp(1.8rem, 3.2vw, 2.4rem); font-weight: 800; color: var(--text-main);">
+          Giỏ Hàng Của Bạn
+        </h1>
+      </div>
+
+      <!-- Main Cart Layout (2 Columns) -->
+      <div class="cart-layout">
+        
+        <!-- ================= COLUMN 1: SẢN PHẨM & FREESHIP ================= -->
+        <div class="cart-left-col">
+          
+          <!-- Smart Free Shipping Bar -->
+          <div class="shipping-progress-card" id="shipping-progress-card">
+            <div class="shipping-progress-msg" id="shipping-progress-msg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+              <span id="shipping-msg-text">Đang tính toán tiến trình Freeship...</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="shipping-progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- Cart Items Container -->
+          <div class="cart-items-card">
+            <div class="cart-items-header">
+              <h3 id="cart-item-count-title">Sản phẩm trong giỏ (0)</h3>
+              <button class="btn btn-secondary btn-sm" id="btn-clear-entire-cart" style="color: var(--danger); border-color: #FECACA;">
+                Xóa tất cả
+              </button>
+            </div>
+
+            <!-- List of cart items -->
+            <div class="cart-items-list" id="cart-items-list">
+              <!-- Dynamically populated by cart.js -->
+            </div>
+
+            <!-- Empty State (Shown if cart is empty) -->
+            <div class="cart-empty-state" id="cart-empty-view" style="display: none;">
+              <div class="cart-empty-icon">
+                <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </div>
+              <h3>Giỏ hàng đang trống!</h3>
+              <p>Bạn chưa thêm sản phẩm nào vào giỏ. Hãy dạo quanh cửa hàng và chọn cho mình những món đồ ưng ý nhé.</p>
+              <a href="shop.html" class="btn btn-primary btn-lg">
+                <span>Tiếp tục mua sắm</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Back to Shopping Link -->
+          <div style="margin-top: 1.25rem;">
+            <a href="shop.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--primary); font-size: 0.95rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Tiếp tục mua sắm thêm sản phẩm</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ================= COLUMN 2: TÓM TẮT & FORM THANH TOÁN ================= -->
+        <div class="checkout-panel">
+          
+          <!-- Card 1: Order Summary & Coupon -->
+          <div class="summary-card">
+            <h3 class="summary-title">Tóm Tắt Đơn Hàng</h3>
+
+            <!-- Coupon Input -->
+            <form class="coupon-form" id="coupon-form">
+              <input type="text" 
+                     id="coupon-code-input" 
+                     class="coupon-input" 
+                     placeholder="Nhập mã voucher (vd: FIRST15)" 
+                     aria-label="Mã giảm giá">
+              <button type="submit" class="btn btn-secondary btn-sm" id="btn-apply-coupon">
+                Áp dụng
+              </button>
+            </form>
+
+            <!-- Applied Coupon Badge (Hidden by default) -->
+            <div class="applied-coupon-pill" id="applied-coupon-pill" style="display: none;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <span>Mã <strong id="applied-coupon-code">FIRST15</strong> (-15%)</span>
+              </div>
+              <button type="button" class="btn-remove-coupon" id="btn-remove-coupon" title="Xóa mã">✕</button>
+            </div>
+
+            <!-- Price Breakdown Rows -->
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span>Tạm tính</span>
+                <span id="summary-subtotal">0₫</span>
+              </div>
+
+              <div class="summary-row discount-row" id="row-discount" style="display: none;">
+                <span>Giảm giá voucher</span>
+                <span id="summary-discount">-0₫</span>
+              </div>
+
+              <div class="summary-row" id="row-shipping">
+                <span>Phí vận chuyển</span>
+                <span id="summary-shipping">30.000₫</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Thuế VAT (8%)</span>
+                <span id="summary-vat">0₫</span>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-row total-row">
+                <span>Tổng cộng</span>
+                <span class="total-amount" id="summary-total">0₫</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Thông tin giao hàng & Đa kênh thanh toán -->
+          <div class="checkout-form-card">
+            <h3 class="summary-title" style="margin-bottom: 1.5rem;">Thông Tin Giao Hàng</h3>
+
+            <form id="checkout-form" novalidate>
+              <!-- Họ và tên -->
+              <div class="form-group" id="group-fullname">
+                <label class="form-label" for="checkout-fullname">Họ và tên của bạn *</label>
+                <input type="text" id="checkout-fullname" class="form-input" placeholder="Ví dụ: Nguyễn Văn An" required>
+                <div class="form-error">Vui lòng nhập họ và tên (tối thiểu 3 ký tự)</div>
+              </div>
+
+              <!-- Số điện thoại & Email (2 cột) -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div class="form-group" id="group-phone">
+                  <label class="form-label" for="checkout-phone">Số điện thoại *</label>
+                  <input type="tel" id="checkout-phone" class="form-input" placeholder="0912345678" required>
+                  <div class="form-error">Số điện thoại không hợp lệ</div>
+                </div>
+
+                <div class="form-group" id="group-email">
+                  <label class="form-label" for="checkout-email">Email nhận tin *</label>
+                  <input type="email" id="checkout-email" class="form-input" placeholder="ten@email.com" required>
+                  <div class="form-error">Email không đúng định dạng</div>
+                </div>
+              </div>
+
+              <!-- Địa chỉ giao hàng -->
+              <div class="form-group" id="group-address">
+                <label class="form-label" for="checkout-address">Địa chỉ nhận hàng chi tiết *</label>
+                <input type="text" id="checkout-address" class="form-input" placeholder="Số nhà, tên đường, Phường/Xã, Quận/Huyện, Tỉnh/TP" required>
+                <div class="form-error">Vui lòng nhập địa chỉ nhận hàng cụ thể</div>
+              </div>
+
+              <!-- Ghi chú đơn hàng -->
+              <div class="form-group">
+                <label class="form-label" for="checkout-note">Ghi chú giao hàng (Tùy chọn)</label>
+                <textarea id="checkout-note" class="form-textarea" rows="2" placeholder="Ghi chú thêm về giờ giao, chỉ dẫn tìm nhà..."></textarea>
+              </div>
+
+              <!-- Phương thức thanh toán đa kênh -->
+              <div class="form-group">
+                <label class="form-label">Phương thức thanh toán *</label>
+                
+                <div class="payment-methods-grid">
+                  <!-- Method 1: COD -->
+                  <div class="payment-method-card selected" data-method="cod">
+                    <div class="payment-card-top">
+                      <span class="payment-card-title">💵 Tiền mặt (COD)</span>
+                      <input type="radio" name="payment-method" value="cod" checked>
+                    </div>
+                    <span class="payment-card-desc">Thanh toán khi nhận hàng</span>
+                  </div>
+
+                  <!-- Method 2: VietQR -->
+                  <div class="payment-method-card" data-method="vietqr">
+                    <div class="payment-card-top">
+                      <span class="payment-card-title">📱 Quét VietQR</span>
+                      <input type="radio" name="payment-method" value="vietqr">
+                    </div>
+                    <span class="payment-card-desc">Chuyển khoản 24/7 tức thì</span>
+                  </div>
+
+                  <!-- Method 3: Ví MoMo/ZaloPay -->
+                  <div class="payment-method-card" data-method="ewallet">
+                    <div class="payment-card-top">
+                      <span class="payment-card-title">💳 Ví Điện Tử</span>
+                      <input type="radio" name="payment-method" value="ewallet">
+                    </div>
+                    <span class="payment-card-desc">MoMo, ZaloPay, ShopeePay</span>
+                  </div>
+
+                  <!-- Method 4: Thẻ quốc tế -->
+                  <div class="payment-method-card" data-method="card">
+                    <div class="payment-card-top">
+                      <span class="payment-card-title">🌐 Thẻ Visa / Master</span>
+                      <input type="radio" name="payment-method" value="card">
+                    </div>
+                    <span class="payment-card-desc">Bảo mật thẻ quốc tế 3D-Secure</span>
+                  </div>
+                </div>
+
+                <!-- Chi tiết phương thức động -->
+                <div class="payment-detail-box" id="payment-details-preview">
+                  <div id="detail-cod-box">
+                    <p style="color: var(--text-secondary);">
+                      🚚 Bạn sẽ thanh toán trực tiếp bằng tiền mặt cho nhân viên giao hàng khi kiểm tra và nhận kiện hàng.
+                    </p>
+                  </div>
+
+                  <div id="detail-vietqr-box" style="display: none;">
+                    <div class="vietqr-box">
+                      <div class="mock-qr-code">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8">
+                          <rect x="3" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="3" width="7" height="7"></rect>
+                          <rect x="14" y="14" width="7" height="7"></rect>
+                          <rect x="3" y="14" width="7" height="7"></rect>
+                          <line x1="10" y1="7" x2="10" y2="7.01"></line>
+                          <line x1="7" y1="10" x2="7" y2="10.01"></line>
+                        </svg>
+                      </div>
+                      <div>
+                        <div style="font-weight: 700; color: var(--text-main);">Ngân Hàng MB Bank (Quân Đội)</div>
+                        <div style="color: var(--text-secondary); font-size: 0.8rem;">STK: <strong>0399888999</strong></div>
+                        <div style="color: var(--text-secondary); font-size: 0.8rem;">Chủ TK: <strong>CONG TY TRENDMART VIETNAM</strong></div>
+                        <div style="color: var(--primary); font-size: 0.75rem; margin-top: 0.2rem;">Mã QR chuyển khoản tự động kèm nội dung</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="detail-ewallet-box" style="display: none;">
+                    <p style="color: var(--text-secondary); margin-bottom: 0.4rem;">
+                      📲 Quét mã thanh toán qua ứng dụng <strong>MoMo</strong> hoặc <strong>ZaloPay</strong> sau khi xác nhận đơn.
+                    </p>
+                    <span style="font-size: 0.78rem; color: var(--badge-sale); font-weight: 600;">Ưu đãi hoàn tiền 2% cho đơn từ 500k qua ví điện tử.</span>
+                  </div>
+
+                  <div id="detail-card-box" style="display: none;">
+                    <div style="display: grid; gap: 0.5rem;">
+                      <input type="text" class="form-input" placeholder="Số thẻ (16 chữ số)" maxlength="19" style="font-size: 0.85rem; padding: 0.5rem 0.75rem;">
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                        <input type="text" class="form-input" placeholder="MM/YY" maxlength="5" style="font-size: 0.85rem; padding: 0.5rem 0.75rem;">
+                        <input type="password" class="form-input" placeholder="CVV / CVC" maxlength="4" style="font-size: 0.85rem; padding: 0.5rem 0.75rem;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Nút Hoàn Tất Đặt Hàng -->
+              <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-submit-order">
+                <span>Hoàn Tất Đặt Hàng</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= MODAL XÁC NHẬN ĐƠN HÀNG THÀNH CÔNG ================= -->
+  <div class="modal-overlay" id="order-success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-success-title">
+    <div class="modal-dialog">
+      <div class="modal-success-badge">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h2 class="modal-title" id="modal-success-title">Đặt Hàng Thành Công!</h2>
+      <p class="modal-desc">
+        Cảm ơn bạn đã tin tưởng TrendMart. Đơn hàng của bạn đã được ghi nhận và đang chuẩn bị đóng gói.
+      </p>
+
+      <!-- Order Receipt Info -->
+      <div class="order-receipt-box">
+        <div class="order-receipt-row">
+          <span style="color: var(--text-secondary);">Mã đơn hàng:</span>
+          <strong id="receipt-order-id" style="color: var(--primary); font-family: monospace; font-size: 1rem;">#TM-00000</strong>
+        </div>
+        <div class="order-receipt-row">
+          <span style="color: var(--text-secondary);">Người nhận:</span>
+          <strong id="receipt-customer-name">Nguyễn Văn An</strong>
+        </div>
+        <div class="order-receipt-row">
+          <span style="color: var(--text-secondary);">Số điện thoại:</span>
+          <span id="receipt-customer-phone">0912345678</span>
+        </div>
+        <div class="order-receipt-row">
+          <span style="color: var(--text-secondary);">Địa chỉ:</span>
+          <span id="receipt-customer-address" style="text-align: right; max-width: 250px;">TP. Hồ Chí Minh</span>
+        </div>
+        <div class="order-receipt-row">
+          <span style="color: var(--text-secondary);">Thanh toán:</span>
+          <span id="receipt-payment-method">Thanh toán khi nhận hàng (COD)</span>
+        </div>
+        <div class="order-receipt-row" style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-medium);">
+          <span style="font-weight: 700; color: var(--text-main);">Tổng thanh toán:</span>
+          <strong id="receipt-total-amount" style="color: var(--primary); font-size: 1.15rem;">0₫</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="index.html" class="btn btn-primary">
+          <span>Về trang chủ</span>
+        </a>
+        <a href="shop.html" class="btn btn-secondary">
+          <span>Mua sắm tiếp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </div>
+            <span class="brand-name">Trend<span style="color: #A78BFA;">Mart</span></span>
+          </div>
+          <p>Hệ thống mua sắm trực tuyến thông minh với giỏ hàng tự động, ưu đãi ngập tràn và trải nghiệm mượt mà không độ trễ.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Về TrendMart</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html" class="footer-nav-link">Câu chuyện thương hiệu</a></li>
+            <li><a href="shop.html" class="footer-nav-link">Danh sách cửa hàng</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Hỗ Trợ Khách Hàng</h4>
+          <ul class="footer-nav">
+            <li><a href="cart.html" class="footer-nav-link">Kiểm tra giỏ hàng</a></li>
+            <li><a href="#" class="footer-nav-link">Chính sách đổi trả 30 ngày</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Danh Mục Hàng Đầu</h4>
+          <ul class="footer-nav">
+            <li><a href="shop.html?category=tech" class="footer-nav-link">Công nghệ & Phụ kiện</a></li>
+            <li><a href="shop.html?category=fashion-women" class="footer-nav-link">Thời trang Nữ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter-col">
+          <h4 class="footer-heading">Đăng Ký Nhận Tin</h4>
+          <p class="newsletter-desc">Nhận ngay mã giảm giá và voucher bí mật sớm nhất.</p>
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Nhập email của bạn..." required>
+            <button type="submit" class="btn btn-primary btn-sm">Gửi</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 TrendMart. Thiết kế và phát triển với 100% HTML5, CSS3 & ES6+ Javascript.</p>
+        <p>Thương mại điện tử thông minh cho mọi nhà.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE BOTTOM NAVIGATION ================= -->
+  <nav class="mobile-bottom-nav" aria-label="Thanh điều hướng di động">
+    <div class="mobile-bottom-nav-inner">
+      <a href="index.html" class="mobile-bottom-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Trang chủ</span>
+      </a>
+      <a href="shop.html" class="mobile-bottom-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Cửa hàng</span>
+      </a>
+      <a href="cart.html" class="mobile-bottom-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="mobile-bottom-badge cart-badge">0</span>
+        <span>Giỏ hàng</span>
+      </a>
+      <button type="button" class="mobile-bottom-item" onclick="AuthService.openModal('login')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span id="bottom-nav-account-text">Tài khoản</span>
+      </button>
+      <button type="button" class="mobile-bottom-item" onclick="ThemeService.toggle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <span id="bottom-nav-theme-text">Giao diện</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
